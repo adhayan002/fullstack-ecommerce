@@ -1,7 +1,6 @@
 import express,{json,urlencoded} from "express"
 import productRoutes from "./routes/products/index"
 
-
 const app=express()
 const port=3000
 
