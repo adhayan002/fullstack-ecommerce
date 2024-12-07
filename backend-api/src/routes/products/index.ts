@@ -1,21 +1,21 @@
 import { Router } from 'express';
-import { createProduct, deleteProduct, getProductById, listProduct, updateProduct } from './productController';
+import { createProductSchema, updateProductSchema } from '../../db/productSchema';
+import { verifySeller, verifyToken } from '../../middleware/authMiddleware';
 import { validateData } from '../../middleware/validationMiddleware';
-import { createProductSchema,updateProductSchema} from '../../db/productSchema';
-
+import { createProduct, deleteProduct, getProductById, listProduct, updateProduct } from './productController';
 
 
 //products endpoints
-const router=Router()
+const router = Router()
 
-router.get("/",listProduct)
+router.get("/", listProduct)
 
-router.get("/:id",getProductById)
+router.get("/:id", getProductById)
 
-router.post("/",validateData(createProductSchema),createProduct)
+router.post("/", verifyToken, verifySeller, validateData(createProductSchema), createProduct)
 
-router.put("/:id",validateData(updateProductSchema),updateProduct)
+router.put("/:id", verifyToken, verifySeller, validateData(updateProductSchema), updateProduct)
 
-router.delete("/:id",deleteProduct)
+router.delete("/:id", verifyToken, verifySeller, deleteProduct)
 
 export default router
