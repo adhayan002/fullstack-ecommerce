@@ -1,6 +1,7 @@
 import express, { json, urlencoded } from "express";
 import serverless from "serverless-http";
 import authRoutes from "./routes/auth/index.js";
+import orderRoutes from "./routes/orders/index.js";
 import productRoutes from "./routes/products/index.js";
 
 const app = express()
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 
 app.use("/products", productRoutes)
 app.use("/auth", authRoutes)
+app.use("/orders", orderRoutes)
 
 if (process.env.NODE_ENV === "dev") {
     app.listen(port, () => {

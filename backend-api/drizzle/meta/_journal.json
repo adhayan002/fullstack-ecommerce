@@ -8,6 +8,13 @@
       "when": 1733579899463,
       "tag": "0000_curved_scalphunter",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1733659501199,
+      "tag": "0001_dusty_gideon",
+      "breakpoints": true
     }
   ]
 }
